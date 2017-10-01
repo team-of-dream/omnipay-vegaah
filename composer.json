@@ -1,0 +1,20 @@
+{
+    "name": "tod/omnipay-vegaah",
+    "description": "Vegaah gateway for the Omnipay 2.x payment processing library",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "vegaah",
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment"
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Vegaah\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    }
+}
