@@ -10,16 +10,23 @@ namespace Omnipay\Vegaah\Message;
 class AuthorizeRequest extends AbstractRequest
 {
     /**
+     * Authorize code for Vegaah
+     *
+     * @var int
+     */
+    protected $actionCode = 4;
+
+    /**
      * {@inheritDoc}
      */
     public function getData()
     {
-        $this->validate('amount', 'currency');
+        $this->validate('amount', 'currency','terminalid','password','trackid');
 
         $data = [
             'terminalid'   => $this->getTerminalId(),
             'password'     => $this->getPassword(),
-            'action'       => $this->getAction(),
+            'action'       => $this->actionCode,
             'amount'       => $this->getAmount(),
             'currencyCode' => $this->getCurrency(),
             'trackid'      => $this->getTrackId(),
@@ -27,12 +34,14 @@ class AuthorizeRequest extends AbstractRequest
             'statecode'    => $this->getStateCode(),
             'zip'          => $this->getZip(),
             'address'      => $this->getAddress(),
-            'transid'      => $this->getTransId(),
         ];
 
         if ($this->getCard()) {
             $data = array_merge($data, $this->getCardData());
         }
+
+        //attach Udf fields,customer and merchant ip
+        $data = array_merge($data, $this->getUdfAndIpFields());
 
         return $data;
     }

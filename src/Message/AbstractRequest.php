@@ -18,7 +18,7 @@ use Symfony\Component\EventDispatcher\Event;
 abstract class AbstractRequest extends OmnipayAbstractRequest
 {
     /**
-     * Test Vehaah endpoint URL
+     * Test Vegaah endpoint URL
      *
      * @var string
      */
@@ -228,7 +228,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
     }
 
     /**
-     * Get address
+     * Set address
      *
      * @param $value
      *
@@ -240,25 +240,153 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
     }
 
     /**
-     * Get original transaction reference number provided by gateway
+     * Get IP address of the merchant’s system from which
+     * transaction is generated
      *
-     * @return mixed
+     * @return string
      */
-    public function getTransId()
+    public function getMerchantIp()
     {
-        return $this->getParameter('transid');
+        return $this->getParameter('merchantip');
     }
 
     /**
-     * Get original transaction reference number provided by gateway
+     * Set IP address of the merchant’s system
      *
      * @param $value
      *
      * @return $this
      */
-    public function setTransID($value)
+    public function setMerchantIp($value)
     {
-        return $this->setParameter('transid', $value);
+        return $this->setParameter('merchantip', $value);
+    }
+
+    /**
+     * Get IP address of the customer’s system
+     *
+     * @return string
+     */
+    public function getCustomerIp()
+    {
+        return $this->getParameter('customerip');
+    }
+
+    /**
+     * Set IP address of the customer’s system
+     *
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setCustomerIp($value)
+    {
+        return $this->setParameter('customerip', $value);
+    }
+
+    /**
+     * Get User defined field1.
+     *
+     * @return string
+     */
+    public function getUdf1()
+    {
+        return $this->getParameter('udf1');
+    }
+
+    /**
+     * Set User defined field1
+     *
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setUdf1($value)
+    {
+        return $this->setParameter('udf1', $value);
+    }
+
+    /**
+     * Get User defined field2.
+     *
+     * @return string
+     */
+    public function getUdf2()
+    {
+        return $this->getParameter('udf2');
+    }
+
+    /**
+     * Set User defined field2
+     *
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setUdf2($value)
+    {
+        return $this->setParameter('udf2', $value);
+    }
+
+    /**
+     * Get User defined field3.
+     *
+     * @return string
+     */
+    public function getUdf3()
+    {
+        return $this->getParameter('udf3');
+    }
+
+    /**
+     * Set User defined field3
+     *
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setUdf3($value)
+    {
+        return $this->setParameter('udf3', $value);
+    }
+
+    /**
+     * Get User defined field4.
+     *
+     * @return string
+     */
+    public function getUdf4()
+    {
+        return $this->getParameter('udf4');
+    }
+
+    /**
+     * Set User defined field4
+     *
+     * @param $value
+     *
+     * @return $this
+     */
+    public function setUdf4($value)
+    {
+        return $this->setParameter('udf4', $value);
+    }
+
+    /**
+     * Get User defined fields, merchantIp and customerIp fields data.
+     *
+     * @return array
+     */
+    public function getUdfAndIpFields()
+    {
+        return [
+            'merchatip'  => $this->getMerchantIp(),
+            'customerip' => $this->getCustomerIp(),
+            'udf1'       => $this->getUdf1(),
+            'udf2'       => $this->getUdf2(),
+            'udf3'       => $this->getUdf3(),
+            'udf4'       => $this->getUdf4(),
+        ];
     }
 
     /**
