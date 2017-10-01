@@ -12,7 +12,9 @@
         "payment"
     ],
     "autoload": {
-        "psr-4": { "Omnipay\\Vegaah\\" : "src/" }
+        "psr-4": {
+            "Omnipay\\Vegaah\\": "src/"
+        }
     },
     "require": {
         "omnipay/common": "~2.0"
