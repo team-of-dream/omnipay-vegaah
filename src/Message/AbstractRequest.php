@@ -420,7 +420,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
 
             $body = $httpResponse->getBody(true);
 
-            $xmlToArrayResponse = !empty($body) ? $httpResponse->xml() : [];
+            $xmlToArrayResponse = !empty($body) ? (array)$httpResponse->xml() : [];
 
             return $this->response = $this->createResponse($xmlToArrayResponse, $httpResponse->getStatusCode());
         } catch (\Exception $e) {
@@ -434,12 +434,12 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
     /**
      * Create a Vegaah Omnipay responce instance
      *
-     * @param SimpleXMLElement $data
-     * @param int              $statusCode
+     * @param array $data
+     * @param int   $statusCode
      *
      * @return \Omnipay\Vegaah\Message\Response
      */
-    protected function createResponse(SimpleXMLElement $data, $statusCode)
+    protected function createResponse(array $data, $statusCode)
     {
         return $this->response = new Response($this, $data, $statusCode);
     }
