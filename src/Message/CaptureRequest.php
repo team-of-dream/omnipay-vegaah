@@ -43,7 +43,7 @@ class CaptureRequest extends AbstractRequest
      */
     public function getData()
     {
-        $this->validate('terminalid', 'trackid', 'transid' ,'password','amount', 'currency');
+        $this->validate('terminalid', 'trackid', 'transid', 'password', 'amount', 'currency');
 
         $data = [
             'terminalid'   => $this->getTerminalId(),
@@ -60,5 +60,4 @@ class CaptureRequest extends AbstractRequest
 
         return $data;
     }
-
 }

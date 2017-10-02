@@ -89,7 +89,7 @@ class Response extends AbstractResponse implements RedirectResponseInterface
      */
     public function getRedirectUrl()
     {
-        return $this->isRedirect() ? $this->data['targetUrl'] . $this->data['payid']  : null;
+        return $this->isRedirect() ? $this->data['targetUrl'] . $this->data['payid'] : null;
     }
 
     /**

@@ -21,7 +21,7 @@ class AuthorizeRequest extends AbstractRequest
      */
     public function getData()
     {
-        $this->validate('amount', 'currency','terminalid','password','trackid');
+        $this->validate('amount', 'currency', 'terminalid', 'password', 'trackid');
 
         $data = [
             'terminalid'   => $this->getTerminalId(),
